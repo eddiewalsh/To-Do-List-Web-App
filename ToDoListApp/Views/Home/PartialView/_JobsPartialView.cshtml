@@ -1,0 +1,36 @@
+﻿@model Jobs
+<!--Add Task Modal-->
+<div class="modal fade" id="AddModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="AddJobLabel" style="padding-left: 20px";font-size:2.3em;>New Task</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form asp-action="Create" method="post" id="createForm" onsubmit="return submitCreateForm()">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<input type="hidden" asp-for="isCompleted" value="false"/>
+						<input type="hidden" asp-for="CreatedAt" value="@DateTime.Now"/>
+						<label asp-for="JobTitle" class="custom-control-label">Title</label>
+						<input asp-for="JobTitle" class="form-control" maxlength="50" required pattern="^(?!\s*$).+"/>
+						<span asp-validation-for="JobTitle" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="JobDescription" class="custom-control-label">Description</label>
+						<textarea asp-for="JobDescription" class="form-control" required pattern="^(?!\s*$).+"/></textarea>
+						<span asp-validation-for="JobDescription" class="text-danger"></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

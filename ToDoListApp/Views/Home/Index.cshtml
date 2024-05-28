@@ -1,0 +1,77 @@
+﻿@model List<Jobs>
+@using System.Text.Encodings.Web
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    @foreach (var job in Model)
+    {
+        @if (job.isCompleted)
+        {
+            <div class="panel-completed" data-toggle="modal">
+                @if (job.CreatedAt.Date.Equals(DateTime.Now.Date))
+                {
+                    <div class="time">Today @job.CreatedAt.ToString("HH:mm tt")</div>
+                }
+                else
+                {
+                    <div class="time">@job.CreatedAt.ToString("dd/MM/yy HH:mm tt")</div>
+                }
+                <div class="message">@Html.Raw(HtmlEncoder.Default.Encode(job.JobTitle ?? ""))</div>
+                <div class="icons">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="completedCheckbox-@job.Id" @(job.isCompleted ? "checked" : "") data-jobid="@job.Id" onchange="updateCompletionStatus(this)">
+                        <label for="completedCheckbox-@job.Id">Completed</label>
+                    </div>
+                    <div class="viewbutton-wrapper">                                        <!--Specifies the model type--> <!--Calls the Edit function in our controller and passes the job ID-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ViewProduct-@job.Id" data-url="@Url.Action("Edit", new { id = job.Id })">View</button>
+                        @await Html.PartialAsync("PartialView/_ViewJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                    </div>
+                            <div class="editbutton-wrapper">                               <!--Specifies the model type--> <!--Calls the Edit function in our controller and passes the job ID-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct-@job.Id" data-url="@Url.Action("Edit", new { id = job.Id })">Edit</button>
+                        @await Html.PartialAsync("PartialView/_EditJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                    </div>
+                            <div class="deletebutton-wrapper">                            <!--Specifies the model type--> <!--Calls the Delete function in our controller and passes the job ID-->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteProduct-@job.Id" data-url="@Url.Action("Delete", new { id = job.Id })">Delete</button>
+                        @await Html.PartialAsync("PartialView/_DeleteJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="panel-uncompleted" data-toggle="modal">
+                @if (job.CreatedAt.Date.Equals(DateTime.Now.Date))
+                {
+                    <div class="time">Today @job.CreatedAt.ToString("HH:mm tt")</div>
+                }
+                else
+                {
+                    <div class="time">@job.CreatedAt.ToString("dd/MM/yy HH:mm tt")</div>
+                }
+                <div class="message">@Html.Raw(HtmlEncoder.Default.Encode(job.JobTitle ?? ""))</div>
+                <div class="icons">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="completedCheckbox-@job.Id" @(job.isCompleted ? "checked" : "") data-jobid="@job.Id" onchange="updateCompletionStatus(this)">
+                        <label for="completedCheckbox-@job.Id">Completed</label>
+                    </div>
+                            <div class="viewbutton-wrapper">                        <!--Specifies the model type--> <!--Calls the Edit function in our controller and passes the job ID-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ViewProduct-@job.Id" data-url="@Url.Action("Edit", new { id = job.Id })">View</button>
+                        @await Html.PartialAsync("PartialView/_ViewJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                             </div>
+                                    <div class="editbutton-wrapper">               <!--Specifies the model type--> <!--Calls the Edit function in our controller and passes the job ID-->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditProduct-@job.Id" data-url="@Url.Action("Edit", new { id = job.Id })">Edit</button>
+                        @await Html.PartialAsync("PartialView/_EditJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                            </div>
+                                    <div class="deletebutton-wrapper">                  <!--Specifies the model type--> <!--Calls the Delete function in our controller and passes the job ID-->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteProduct-@job.Id" data-url="@Url.Action("Delete", new { id = job.Id })">Delete</button>
+                        @await Html.PartialAsync("PartialView/_DeleteJobPartialView", job)<!--Injects the object into the modal once it displays-->
+                            </div>
+                        </div>
+                    </div>
+        }
+    }
+</div>
+
+@await Html.PartialAsync("PartialView/_JobsPartialView", new Jobs())

@@ -1,0 +1,42 @@
+﻿@model Jobs
+@using System.Text.Encodings.Web
+
+<!--Edit Task Modal-->
+<div class="modal fade" id="ViewProduct-@HtmlEncoder.Default.Encode(Model.Id.ToString())">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ViewJobLabel">View Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Id" value="@HtmlEncoder.Default.Encode(Model.Id.ToString())" />
+                        <input type="hidden" asp-for="CreatedAt" value="@HtmlEncoder.Default.Encode(Model.CreatedAt.ToString())" />
+                        <label asp-for="JobTitle" class="custom-control-label">Title</label>
+                        <input asp-for="JobTitle" readonly="true" class="form-control" value="@HtmlEncoder.Default.Encode(Model.JobTitle ?? "")" />
+                        <span asp-validation-for="JobTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="JobDescription" class="custom-control-label">Description</label>
+                        <textarea asp-for="JobDescription" readonly="true" class="form-control" >@HtmlEncoder.Default.Encode(Model.JobDescription ?? "")</textarea>
+                        <span asp-validation-for="JobDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="isCompleted" class="custom-control-label">Completed</label>
+                        <input asp-for="isCompleted" readonly="true" type="checkbox" class="checkbox" checked="@(Model.isCompleted)" disabled/>
+                        <span asp-validation-for="isCompleted" class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

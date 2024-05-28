@@ -1,0 +1,66 @@
+﻿.navbar {
+    background-color: #3cb371;
+    position: fixed;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+
+.navbar-brand {
+    font-family: Knewave, sans-serif;
+    font-size: 2.5rem; 
+}
+
+.navbar-nav {
+    flex-direction: row; 
+}
+
+.nav-item {
+    margin-right: auto; 
+    padding-left: 100px;
+}
+
+.sidebar {
+    background-color: #3cb371;
+    height: 100vh;
+    width: 120px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-right:40px;
+    padding-bottom: 20px;
+    list-style: none;
+}
+
+.sidebar-item {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.custom-button {
+    background-color: #3cb371;
+    border-color: #3cb371;
+    width: 100%; 
+}
+
+.custom-button:hover {
+    background-color: #2e8b57;
+    border-color: white;
+}
+
+.custom-button:active {
+    background-color: #228b22;
+    border-color: white;
+}
+
+.custom-image {
+    width: 20px;
+    height: 20px;
+}
+

@@ -1,0 +1,147 @@
+﻿
+.container-fluid {
+    padding: 60px;
+    padding-right: 0px;
+    padding-left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    margin-right: 20px;
+    overflow-x: hidden;
+}
+
+.panel-uncompleted {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 98%;
+}
+
+.panel-completed {
+    background-color: #DEDEDE;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 98%;
+}
+
+.panel-completed:hover,panel-uncompleted:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.panel-completed:hover, panel-uncompleted:hover {
+    background-color: #e6e6e6;
+}
+
+.panel-completed:hover, panel-uncompleted:hover {
+    background-color: #e6e6e6;
+}
+
+.time {
+    color: #3cb371;
+    font-size: 14px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.message {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+    padding-left: 20px;
+    font-size: 1.5em;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #3cb371;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button {
+    padding-left: 10px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.checkbox-wrapper label {
+    padding-top: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 5px;
+}
+
+.checkbox-wrapper label {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+ }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #b52b3f;
+}
+
+.editbutton-wrapper {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.viewbutton-wrapper button {
+    padding-right: 20px;
+    padding-left: 40px;
+    background-color: #3cb371;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}

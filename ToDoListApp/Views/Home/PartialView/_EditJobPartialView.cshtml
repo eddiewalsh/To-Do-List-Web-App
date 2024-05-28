@@ -1,0 +1,41 @@
+﻿@model Jobs
+
+<!--Edit Task Modal-->
+<div class="modal fade" id="EditProduct-@Model.Id">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="EditJobLabel">Edit Task</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form asp-action="Edit" method="post" id="editForm" onsubmit="return submitEditForm()">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<input type="hidden" asp-for="Id"/>
+						<input type="hidden" asp-for="CreatedAt" />
+						<label asp-for="JobTitle" class="custom-control-label">Title</label>
+						<input asp-for="JobTitle" class="form-control" maxlength="50" required/>
+						<span asp-validation-for="JobTitle" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="JobDescription" class="custom-control-label">Description</label>
+						<textarea asp-for="JobDescription" pattern="^\S.*$" class="form-control" required></textarea>
+						<span asp-validation-for="JobDescription" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="isCompleted" class="custom-control-label">Completed</label>
+						<input asp-for="isCompleted" type="checkbox" class="checkbox"/>
+						<span asp-validation-for="isCompleted" class="text-danger"></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
